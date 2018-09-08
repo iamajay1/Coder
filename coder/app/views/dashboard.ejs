@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <% include ./design/style1.ejs %>
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+         <div class="container">
+           <a class="navbar-brand" href="#">Welcome To Coder : <%= user.name %></a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarResponsive">
+             <ul class="navbar-nav ml-auto">
+               <li class="nav-item active">
+                 <a class="btn btn-default row-group-item" href="#">Home
+                   <span class="sr-only">(current)</span>
+                 </a>
+               </li>
+               </li>
+               <li class="nav-item">
+                 <a class="btn btn-default row-group-item" href="http://localhost:1993/logout">Logout</a>
+               </li>
+             </ul>
+           </div>
+         </div>
+       </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+	
+	<div class="card">
+      <div class="row">
+
+        
+        <!-- /.col-lg-3 -->
+		<form action='http://localhost:1993/users/Search' id="FORM_4" method="post">
+		
+        <div class="col-lg-9">
+			
+			<div class="form-group">
+			<table>
+			<tr>
+			<td>	<input type="text" class="form-control" size="500px" name="sText" placeholder="search your code"> </td>
+			<td>	<input type="hidden" name="sName" value="<%= user._id %>"> </td>		
+			   <td> <button type="submit" class="btn btn-primary">Search</button> </td>
+			</tr>
+			</table>
+			</div>
+		<b>Last 5 Searches </b>
+			
+			<% if(search){ 
+				var j=0;
+			%>
+         
+                     <% for(var i=search.length-1;i>=0;i--){ 
+						%>
+							
+						 <p> <%= search[i].sText %> </p> 
+						<%
+						j++;
+						if(j==5){
+							break;
+						}
+						
+					 %>
+            
+				            
+          
+            <% } %>
+
+         
+          <% } else { %>
+            <p> NO any Searches </p>
+            <% } %>
+			
+			
+        </div>
+        <!-- /.col-lg-9 -->
+		
+
+      <!--    <button type="submit" class="btn btn-primary">Search</button>-->
+        
+        
+		</form>
+		
+		</div>
+      <!-- /.row -->
+	</div>	
+      
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">		©2018  All Rights Reserved & Design by - Ajay Jadhav</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+
+
+  </body>
+
+</html>
+
+          <!-- /.row -->
